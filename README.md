@@ -1,150 +1,250 @@
-﻿# Proyecto de Visión Artificial: Clasificación de Alimentos y Análisis de Comida Saludable
+﻿# Proyecto de Visión Artificial: Clasificador de Comida Saludable
 
-Este proyecto implementa una Red Neuronal Convolucional (CNN) para clasificar imágenes de alimentos en 101 categorías distintas utilizando el dataset Food-41. Adicionalmente, el sistema está diseñado para realizar una clasificación secundaria que determina si el plato de comida identificado es "saludable" o "no saludable".
+**Análisis y Clasificación de Platos de Comida como "Saludables" o "No Saludables" mediante Redes Neuronales Convolucionales.**
 
-El proyecto se desarrolla íntegramente en un notebook de Google Colab, abarcando desde la descarga y preprocesamiento de los datos hasta la definición, entrenamiento y evaluación del modelo.
+## Índice
 
-## 📜 Tabla de Contenidos
+1.  [Descripción del Proyecto](#1-descripción-del-proyecto)
+2.  [Estructura del Repositorio](#2-estructura-del-repositorio)
+3.  [Instalación y Ejecución](#3-instalación-y-ejecución)
+4.  [Metodología Técnica](#4-metodología-técnica)
+    - [Preprocesamiento de Datos](#41-preprocesamiento-de-datos)
+    - [Comparación de Técnicas](#42-comparación-de-técnicas)
+    - [Arquitectura del Modelo](#43-arquitectura-del-modelo)
+5.  [Evaluación y Resultados](#5-evaluación-y-resultados)
+6.  [Interfaz Gráfica Interactiva](#6-interfaz-gráfica-interactiva)
+7.  [Reflexión Ética](#7-reflexión-ética)
+8.  [Autor](#8-autor)
 
-1.  [Descripción del Proyecto](https://www.google.com/search?q=%23-descripci%C3%B3n-del-proyecto)
-2.  [Dataset](https://www.google.com/search?q=%23-dataset)
-3.  [Tecnologías Utilizadas](https://www.google.com/search?q=%23-tecnolog%C3%ADas-utilizadas)
-4.  [Estructura del Proyecto y Flujo de Trabajo](https://www.google.com/search?q=%23-estructura-del-proyecto-y-flujo-de-trabajo)
-5.  [Cómo Ejecutar el Notebook](https://www.google.com/search?q=%23-c%C3%B3mo-ejecutar-el-notebook)
-6.  [Arquitectura del Modelo](https://www.google.com/search?q=%23-arquitectura-del-modelo)
-7.  [Resultados (Análisis del Entrenamiento)](https://www.google.com/search?q=%23-resultados-an%C3%A1lisis-del-entrenamiento)
-8.  [Autores](https://www.google.com/search?q=%23-autores)
+---
 
-## 🎯 Descripción del Proyecto
+## 1. Descripción del Proyecto
 
-El objetivo principal de este proyecto es desarrollar un sistema de visión artificial capaz de:
+### Objetivo General
 
-1.  **Clasificar imágenes de alimentos** en una de las 101 categorías disponibles en el dataset Food-41.
-2.  **Realizar una clasificación binaria** sobre la categoría identificada para determinar si el plato es **saludable** o **no saludable**.
-3.  Implementar una **Red Neuronal Convolucional (CNN) de 10 capas** con técnicas de regularización como **Dropout** para prevenir el sobreajuste.
+[cite_start]El objetivo de este proyecto es desarrollar un sistema de visión artificial completo, desde la recolección y preprocesamiento de datos hasta la implementación y evaluación de un modelo de Deep Learning.  [cite_start]El sistema final es capaz de clasificar una imagen de un plato de comida en dos categorías: **saludable** y **no saludable**. 
 
-Este proyecto sigue las directrices del curso de Aprendizaje de Máquina, aplicando técnicas de preprocesamiento de imágenes, aumento de datos y evaluación de modelos de Deep Learning.
+### Caso de Estudio
 
-## 🍔 Dataset
+[cite_start]Se aborda un caso de estudio real: la clasificación automática de alimentos, un problema relevante en aplicaciones de salud, nutrición y bienestar.  Utilizando el dataset **Food-101**, que contiene 101 categorías de alimentos, se ha creado un clasificador binario. La clasificación se basa en una metadata predefinida que agrupa cada una de las 101 clases originales en "saludable" o "no saludable".
 
-Se utiliza el dataset **Food-41**, una versión más manejable del popular Food-101. Este dataset contiene 101,000 imágenes de 101 categorías diferentes de alimentos.
+-   [cite_start]**Fecha de Entrega:** 23 de Junio 2025 
+-   [cite_start]**Duración:** 3 Semanas 
 
-  - **Fuente:** [Food-41 Dataset en Kaggle](https://www.kaggle.com/datasets/kmader/food41/data)
-  - **Estructura:** El notebook gestiona la descarga y la organización del dataset en una estructura de carpetas `train/validation/test`, necesaria para el entrenamiento con Keras.
+---
 
-## 🛠️ Tecnologías Utilizadas
+## 2. Estructura del Repositorio
 
-  - **Lenguaje:** Python 3.x
-  - **Framework de Deep Learning:** TensorFlow y Keras
-  - **Librerías Principales:**
-      - `Pandas`: Para manipulación de datos inicial.
-      - `NumPy`: Para operaciones numéricas.
-      - `OpenCV` y `Pillow`: Para procesamiento de imágenes.
-      - `Matplotlib` y `Seaborn`: Para visualización de datos y resultados.
-      - `scikit-learn`: Para métricas de evaluación adicionales.
-      - `tqdm`: Para barras de progreso visuales.
-  - **Entorno de Ejecución:** Google Colab (con GPU).
-
-## 📂 Estructura del Proyecto y Flujo de Trabajo
-
-El proyecto se desarrolla en un único notebook de Google Colab y sigue un flujo de trabajo estructurado:
-
-1.  **Configuración del Entorno:** Instalación de librerías y configuración de la API de Kaggle para la descarga del dataset.
-2.  **Limpieza de Imágenes:** Se implementa un script que verifica la integridad de todos los archivos de imagen en el dataset, eliminando aquellos que están corruptos y que podrían detener el entrenamiento.
-3.  **Organización del Dataset:** Dado que la versión descargada del dataset no incluye archivos de partición (`train.txt`, `test.txt`), se realiza una **división estratificada** manual de los datos:
-      - **70%** para el conjunto de **entrenamiento**.
-      - **15%** para el conjunto de **validación**.
-      - **15%** para el conjunto de **prueba**.
-        Los archivos se copian a una nueva estructura de directorios (`dataset_organized/train`, `dataset_organized/validation`, `dataset_organized/test`) compatible con Keras.
-4.  **Creación de Generadores de Datos:** Se utiliza `ImageDataGenerator` de Keras para:
-      - Cargar imágenes en lotes (batches) desde el disco.
-      - Reescalar los valores de los píxeles de `[0, 255]` a `[0, 1]`.
-      - Aplicar **aumento de datos (Data Augmentation)** al conjunto de entrenamiento (rotaciones, zooms, volteos, etc.) para mejorar la robustez del modelo.
-5.  **Definición del Modelo CNN:** Se construye una CNN secuencial de 10 capas principales con `Dropout` para regularización.
-6.  **Entrenamiento del Modelo:** El modelo se entrena utilizando los generadores de datos. Se emplean callbacks como `ModelCheckpoint` (para guardar el mejor modelo) y `EarlyStopping` (para detener el entrenamiento si no hay mejora).
-7.  **Visualización y Evaluación:** Se grafican las curvas de precisión y pérdida del entrenamiento y se evalúa el modelo final sobre el conjunto de prueba.
-8.  **Clasificación Saludable/No Saludable:** Se implementa la lógica final para clasificar la categoría predicha.
-
-## 🚀 Cómo Ejecutar el Notebook
-
-Para ejecutar este proyecto en Google Colab, sigue estos pasos:
-
-1.  **Abrir en Google Colab:** Abre el archivo `.ipynb` en Google Colab.
-2.  **Configurar la API de Kaggle:**
-      - Ve a tu perfil de Kaggle (`https://www.kaggle.com/`), entra en "Account" y en la sección "API", haz clic en "Create New API Token" para descargar tu archivo `kaggle.json`.
-      - Sube este archivo `kaggle.json` a la sesión de Colab usando el panel de "Archivos" a la izquierda.
-3.  **Ejecutar las Celdas en Orden:**
-      - **Celda 1-3:** Ejecútalas para instalar dependencias, configurar las credenciales y descargar/extraer el dataset. Este paso puede tardar varios minutos.
-      - **Celda 4-5:** Ejecútalas para limpiar y organizar el dataset en las carpetas `train/validation/test`. Este paso también es largo debido a la copia de archivos.
-      - **Celda 6-7:** Crean los generadores de datos y visualizan un ejemplo de aumento de datos.
-      - **Celda 8:** Define la arquitectura del modelo CNN.
-      - **Celda 9:** **Inicia el entrenamiento**. Este es el paso más largo y puede durar varias horas.
-      - **Celdas Siguientes:** Ejecútalas para visualizar los resultados del entrenamiento y evaluar el modelo.
-
-## 🧠 Arquitectura del Modelo
-
-El modelo es una Red Neuronal Convolucional secuencial con 10 capas principales, diseñada para la clasificación de imágenes. La arquitectura es la siguiente:
+El proyecto está organizado de la siguiente manera para garantizar la modularidad y reproducibilidad:
 
 ```
-Model: "sequential"
-_________________________________________________________________
- Layer (type)                Output Shape              Param #   
-=================================================================
- conv2d (Conv2D)             (None, 128, 128, 32)      896       
-                                                                 
- max_pooling2d (MaxPooling2  (None, 64, 64, 32)        0         
- D)                                                              
-                                                                 
- conv2d_1 (Conv2D)           (None, 64, 64, 64)        18496     
-                                                                 
- max_pooling2d_1 (MaxPoolin  (None, 32, 32, 64)        0         
- g2D)                                                            
-                                                                 
- dropout (Dropout)           (None, 32, 32, 64)        0         
-                                                                 
- conv2d_2 (Conv2D)           (None, 32, 32, 128)       73856     
-                                                                 
- max_pooling2d_2 (MaxPoolin  (None, 16, 16, 128)       0         
- g2D)                                                            
-                                                                 
- flatten (Flatten)           (None, 32768)             0         
-                                                                 
- dense (Dense)               (None, 512)               16777728  
-                                                                 
- dropout_1 (Dropout)         (None, 512)               0         
-                                                                 
- dense_1 (Dense)             (None, 101)               51813     
-                                                                 
-=================================================================
-Total params: 16,922,789
-Trainable params: 16,922,789
-Non-trainable params: 0
-_________________________________________________________________
+/
+├── data/                   # Dataset procesado (saludable/no_saludable). No incluido en Git.
+├── food-101/               # Dataset raw descargado de Kaggle. No incluido en Git.
+├── foodnet-env/            # Entorno virtual de Python. No incluido en Git.
+│
+[cite_start]├── app.py                  # Script de la interfaz gráfica con Streamlit. 
+├── augment_data.py         # Script para balancear el dataset con aumento de datos.
+├── clean_images.py         # Utilidad para eliminar imágenes corruptas.
+├── download_dataset.py     # Script para descargar el dataset desde Kaggle.
+[cite_start]├── evaluate.py             # Script para evaluar el modelo final con métricas. 
+[cite_start]├── foodnet_model.py        # Define la arquitectura de la CNN. 
+├── organize_dataset.py     # Organiza el dataset raw en clases binarias.
+├── train.py                # Script principal de entrenamiento del modelo.
+│
+[cite_start]├── foodnet_model.h5        # Modelo entrenado y compilado. 
+├── requirements.txt        # Dependencias del proyecto.
+├── training_history.png    # Gráfico de la historia de entrenamiento.
+└── README.md               # Este informe técnico.
 ```
 
-## 📊 Resultados (Análisis del Entrenamiento)
+---
 
-A continuación se muestran las curvas de aprendizaje del modelo después del entrenamiento.
+## 3. Instalación y Ejecución
 
-#### Curvas de Precisión y Pérdida
+Sigue estos pasos para replicar el entorno y ejecutar el proyecto.
 
-*[Inserta aquí la imagen de los gráficos de `accuracy` y `loss` vs. épocas que se genera al final del entrenamiento. Esto mostrará cómo el modelo aprendió y si hubo sobreajuste.]*
+### Prerrequisitos
 
-#### Métricas de Evaluación Final
+-   Python 3.8 o superior
+-   Git
+-   Credenciales de la API de Kaggle (archivo `kaggle.json`)
 
-*[Inserta aquí una tabla o un resumen con las métricas finales obtenidas en el conjunto de prueba, como Accuracy, Precision, Recall y F1-Score.]*
+### Pasos
 
-| Métrica   | Puntuación |
-| :-------- | :--------- |
-| Accuracy  | XX.XX%     |
-| Precision | XX.XX%     |
-| Recall    | XX.XX%     |
-| F1-Score  | XX.XX%     |
+1.  **Clonar el repositorio:**
+    ```bash
+    git clone [URL-DE-TU-REPOSITORIO]
+    cd [NOMBRE-DEL-REPOSITORIO]
+    ```
 
-## 👥 Autores
+2.  **Configurar las credenciales de Kaggle:**
+    -   Descarga tu archivo `kaggle.json` desde tu cuenta de Kaggle.
+    -   Crea una carpeta `.kaggle` en tu directorio de usuario (`C:\Users\<Tu-Usuario>` en Windows o `~/.kaggle` en macOS/Linux) y coloca el archivo allí.
 
-  - **Akhan Lorenzo Andrés Espinoza Rojas**
-  - **Roberto López Lizana**
-  - **Mariano Mendez Fernandez**
+3.  **Crear y activar el entorno virtual:**
+    ```bash
+    python -m venv foodnet-env
+    # En Windows
+    .\foodnet-env\Scripts\activate
+    # En macOS/Linux
+    source foodnet-env/bin/activate
+    ```
 
------
+4.  **Instalar las dependencias:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+5.  **Ejecutar el flujo de trabajo completo:**
+    Es **crucial** ejecutar los scripts en el siguiente orden:
+    ```bash
+    # 1. Descarga el dataset de Kaggle
+    python download_dataset.py
+
+    # 2. Organiza las 101 clases en 'saludable' y 'no_saludable'
+    python organize_dataset.py
+
+    # 3. Limpia imágenes corruptas que puedan detener el entrenamiento
+    python clean_images.py
+
+    # 4. Aplica aumento de datos para balancear las clases
+    python augment_data.py
+
+    # 5. Entrena el modelo y guarda el archivo .h5
+    python train.py
+
+    # 6. Evalúa el modelo con los datos de prueba
+    python evaluate.py
+    ```
+
+6.  **Lanzar la interfaz gráfica:**
+    ```bash
+    streamlit run app.py
+    ```
+    Se abrirá una pestaña en tu navegador para que puedas probar el modelo interactivamente. 
+
+---
+
+## 4. Metodología Técnica
+
+### 4.1. [cite_start]Preprocesamiento de Datos 
+
+Un preprocesamiento riguroso fue clave para el éxito del modelo.
+
+-   **Organización del Dataset:** Se utilizó un diccionario para mapear las 101 clases del dataset Food-101 a dos categorías binarias: `saludable` (clase 0) y `no saludable` (clase 1).
+-   **Balanceo de Clases (Aumento Offline):** Se detectó un fuerte desbalance de clases. Para solucionarlo, se aplicó **aumento de datos** (rotación, zoom, desplazamiento, etc.) únicamente a las imágenes de la clase minoritaria (`saludable`). Las nuevas imágenes se guardaron en disco, equilibrando el número de muestras antes de iniciar el entrenamiento.
+-   **Limpieza de Datos:** Se inspeccionó el dataset en busca de imágenes corruptas o truncadas que pudieran causar errores durante el entrenamiento, eliminándolas con un script de limpieza.
+-   **Normalización:** Dentro del generador de datos de Keras, los valores de los píxeles de cada imagen (rango 0-255) se reescalaron al rango [0, 1] para facilitar la convergencia del modelo.
+
+### 4.2. [cite_start]Comparación de Técnicas 
+
+Se evaluaron dos arquitecturas principales para resolver el problema.
+
+| Técnica | Ventajas | Desventajas | Decisión Final |
+| :--- | :--- | :--- | :--- |
+| **CNN Personalizada (FoodNet)** | - [cite_start]Control total sobre la arquitectura y los parámetros. <br>- Modelo ligero y optimizado para la tarea binaria específica.<br>- Excelente para demostrar la comprensión de los bloques fundamentales de una CNN. | - Requiere más experimentación y ajuste manual.<br>- Puede tener un rendimiento inferior a modelos pre-entrenados si no se ajusta bien. | **Seleccionada.** Permitió construir una solución desde cero, cumpliendo con los objetivos de la actividad y demostrando el conocimiento en el diseño de arquitecturas. |
+| **Transfer Learning (MobileNetV2)** | - [cite_start]Aprovecha el conocimiento de un modelo entrenado en ImageNet (un dataset masivo). <br>- Requiere menos datos y tiempo de entrenamiento.<br>- Generalmente alcanza una precisión superior con menos esfuerzo. | - Menos control sobre las capas de extracción de características.<br>- El modelo resultante puede ser más grande y menos específico para la tarea. | **No seleccionada.** Aunque es una opción muy potente para producción, el objetivo era centrarse en el diseño de la arquitectura. |
+
+### 4.3. [cite_start]Arquitectura del Modelo 
+
+Se diseñó una Red Neuronal Convolucional (CNN) secuencial a la que llamamos **FoodNet**. Cada bloque está justificado para cumplir una función específica.
+
+-   **Diagrama de Arquitectura Textual:**
+
+    ```
+    Input(64, 64, 3)
+         │
+    ┌────▼────┐
+    │ Conv2D (32 filtros) -> ReLU │  -> Extrae bordes y texturas básicas.
+    ├─────────────────────────────┤
+    │    BatchNormalization       │  -> Estabiliza y acelera el aprendizaje.
+    ├─────────────────────────────┤
+    │      MaxPooling2D           │  -> Reduce la dimensionalidad.
+    └─────────┬───────────────────┘
+              │
+    ┌────▼────┐
+    │ Conv2D (64 filtros) -> ReLU │  -> Aprende características más complejas.
+    ├─────────────────────────────┤
+    │    BatchNormalization       │
+    ├─────────────────────────────┤
+    │      MaxPooling2D           │
+    └─────────┬───────────────────┘
+              │
+    ┌────▼────┐
+    │ Conv2D (128 filtros) -> ReLU│ -> Aprende características de alto nivel.
+    ├─────────────────────────────┤
+    │    BatchNormalization       │
+    ├─────────────────────────────┤
+    │      MaxPooling2D           │
+    └─────────┬───────────────────┘
+              │
+    ┌────▼────┐
+    │        Flatten            │  -> Prepara los datos para la clasificación.
+    ├─────────────────────────────┤
+    │   Dense (256 neuronas)      │  -> Capa de clasificación principal.
+    ├─────────────────────────────┤
+    │    BatchNormalization       │
+    ├─────────────────────────────┤
+    │       Dropout (0.5)         │  -> Previene el sobreajuste.
+    ├─────────────────────────────┤
+    │    Dense (1 neurona)        │  -> Salida Sigmoid para probabilidad.
+    └─────────▼───────────────────┘
+         Output(Probabilidad)
+    ```
+
+---
+
+## [cite_start]5. Evaluación y Resultados 
+
+El modelo fue entrenado utilizando `EarlyStopping` para detenerse en la mejor época y `ModelCheckpoint` para guardar los mejores pesos. Los resultados finales se obtuvieron evaluando el modelo guardado sobre el conjunto de validación.
+
+### Reporte de Clasificación
+
+**[PEGA AQUÍ TU REPORTE DE CLASIFICACIÓN FINAL EN FORMATO MARKDOWN]**
+*Ejemplo:*
+|               | precision | recall | f1-score | support |
+| :------------ | :-------: | :----: | :------: | :-----: |
+| no_saludable  |   0.XX    |  0.XX  |   0.XX   |  XXXX   |
+| saludable     |   0.XX    |  0.XX  |   0.XX   |  XXXX   |
+| **accuracy** |           |        |   **0.XX** |  XXXX   |
+| **macro avg** |   0.XX    |  0.XX  |   0.XX   |  XXXX   |
+| **weighted avg**|   0.XX    |  0.XX  |   0.XX   |  XXXX   |
+
+### Matriz de Confusión
+
+**[PEGA AQUÍ LA IMAGEN DE TU MATRIZ DE CONFUSIÓN (ej: `confusion_matrix.png`)]**
+
+![Matriz de Confusión](ruta/a/tu/matriz_de_confusion.png)
+
+### Historial de Entrenamiento
+
+El siguiente gráfico muestra la evolución de la precisión y la pérdida durante el entrenamiento, demostrando que el modelo aprendió correctamente sin un sobreajuste significativo gracias al `EarlyStopping`.
+
+![Historial de Entrenamiento](training_history.png)
+
+---
+
+## [cite_start]6. Interfaz Gráfica Interactiva 
+
+Para facilitar la prueba y demostración del modelo, se desarrolló una aplicación web simple utilizando **Streamlit**. La aplicación permite al usuario subir una imagen de comida y recibir una clasificación en tiempo real.
+
+**[PEGA AQUÍ UNA CAPTURA DE PANTALLA DE TU APP STREAMLIT EN FUNCIONAMIENTO]**
+
+![Interfaz Gráfica](ruta/a/tu/captura_de_streamlit.png)
+
+---
+
+## [cite_start]7. Reflexión Ética 
+
+El desarrollo de un sistema de clasificación de alimentos conlleva importantes consideraciones éticas:
+
+-   **Subjetividad de "Saludable":** El concepto de "saludable" no es universal. Depende de factores culturales, dietéticos (keto, veganismo, etc.) y necesidades médicas individuales. Nuestro modelo se basa en una clasificación predefinida que acarrea un sesgo inherente. Es crucial presentar la herramienta como una guía y no como una verdad absoluta.
+-   **Sesgo en el Dataset:** El dataset Food-101, aunque extenso, se centra principalmente en comida occidental y asiática. Esto significa que el modelo tendrá un rendimiento deficiente y podría dar clasificaciones erróneas para platos de otras culturas (latinoamericanas, africanas, etc.), perpetuando un sesgo cultural.
+-   **Impacto Social y Legal:** Una herramienta de este tipo podría ser utilizada para promover hábitos saludables, pero también podría ser mal utilizada para fomentar conductas alimentarias restrictivas, avergonzar a personas por sus elecciones alimenticias o generar desórdenes. No existen implicaciones legales directas, pero el impacto social obliga a un diseño responsable.
+
+---
+
+## 8. Autor
+
+**[Escribe aquí tu nombre y el de tu compañero]**
