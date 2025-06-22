@@ -62,9 +62,15 @@ El proyecto está organizado de la siguiente manera para garantizar la modularid
 
 ## 3. Instalación y Ejecución
 
+<<<<<<< HEAD
 Sigue estos pasos para replicar el entorno y ejecutar el proyecto.
 
 ### Prerrequisitos
+=======
+#### Curvas de Precisión y Pérdida
+![training_history](https://github.com/user-attachments/assets/9e5a1dc9-6c4a-4579-afe4-51f85c733e9b)
+*La imagen de los gráficos de `accuracy` y `loss` vs. épocas que se genera al final del entrenamiento. Esto mostrará cómo el modelo aprendió y si hubo sobreajuste.*
+>>>>>>> 649665930f17f7c21e9bd364423ee8f5bb5f8701
 
 -   Python 3.8 o superior
 -   Git
@@ -91,6 +97,7 @@ Sigue estos pasos para replicar el entorno y ejecutar el proyecto.
     source foodnet-env/bin/activate
     ```
 
+<<<<<<< HEAD
 4.  **Instalar las dependencias:**
     ```bash
     pip install -r requirements.txt
@@ -248,3 +255,6 @@ El desarrollo de un sistema de clasificación de alimentos conlleva importantes 
 ## 8. Autor
 
 **[Escribe aquí tu nombre y el de tu compañero]**
+=======
+-----
+>>>>>>> 649665930f17f7c21e9bd364423ee8f5bb5f8701
