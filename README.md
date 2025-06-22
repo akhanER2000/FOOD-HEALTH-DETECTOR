@@ -127,8 +127,8 @@ _________________________________________________________________
 A continuación se muestran las curvas de aprendizaje del modelo después del entrenamiento.
 
 #### Curvas de Precisión y Pérdida
-
-*[Inserta aquí la imagen de los gráficos de `accuracy` y `loss` vs. épocas que se genera al final del entrenamiento. Esto mostrará cómo el modelo aprendió y si hubo sobreajuste.]*
+![training_history](https://github.com/user-attachments/assets/9e5a1dc9-6c4a-4579-afe4-51f85c733e9b)
+*La imagen de los gráficos de `accuracy` y `loss` vs. épocas que se genera al final del entrenamiento. Esto mostrará cómo el modelo aprendió y si hubo sobreajuste.*
 
 #### Métricas de Evaluación Final
 
