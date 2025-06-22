@@ -1,0 +1,33 @@
+﻿# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+foodnet-env/
+*.egg-info/
+dist/
+build/
+data/
+food-101/
+
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDEs and editors
+.idea/
+.vscode/
+.vs/
+*.swp
+*~
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Datasets - Descomenta si no quieres subir el dataset
+*.csv
+*.zip
