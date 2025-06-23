@@ -216,13 +216,13 @@ El modelo fue entrenado utilizando `EarlyStopping` para detenerse en la mejor é
 
 ### Matriz de Confusión
 
-![Matriz de Confusión](https://github.com/akhanER2000/FOOD-HEALTH-DETECTOR/assets/136009831/f05f8845-a9a7-4b77-a89e-31560e2553cd)
+![Matriz de Confusión](matriz_de_confusion.png)
 
 ### Historial de Entrenamiento
 
 El siguiente gráfico muestra la evolución de la precisión y la pérdida durante el entrenamiento, demostrando que el modelo aprendió correctamente sin un sobreajuste significativo gracias al `EarlyStopping`.
 
-![Historial de Entrenamiento](https://github.com/akhanER2000/FOOD-HEALTH-DETECTOR/assets/136009831/9e5a1dc9-6c4a-4579-afe4-51f85c733e9b)
+![Historial de Entrenamiento](training_history.png)
 
 ---
 
