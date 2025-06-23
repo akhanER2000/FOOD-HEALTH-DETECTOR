@@ -1,4 +1,6 @@
-﻿# Proyecto de Visión Artificial: Clasificador de Comida Saludable
+﻿-----
+
+# Proyecto de Visión Artificial: Clasificador de Comida Saludable
 
 **Análisis y Clasificación de Platos de Comida como "Saludables" o "No Saludables" mediante Redes Neuronales Convolucionales.**
 
@@ -22,14 +24,14 @@
 
 ### Objetivo General
 
-[cite_start]El objetivo de este proyecto es desarrollar un sistema de visión artificial completo, desde la recolección y preprocesamiento de datos hasta la implementación y evaluación de un modelo de Deep Learning.  [cite_start]El sistema final es capaz de clasificar una imagen de un plato de comida en dos categorías: **saludable** y **no saludable**. 
+[cite_start]El objetivo de este proyecto es desarrollar un sistema de visión artificial completo, desde la recolección y preprocesamiento de datos hasta la implementación y evaluación de un modelo de Deep Learning. [cite: 2] El sistema final es capaz de clasificar una imagen de un plato de comida en dos categorías: **saludable** y **no saludable**.
 
 ### Caso de Estudio
 
-[cite_start]Se aborda un caso de estudio real: la clasificación automática de alimentos, un problema relevante en aplicaciones de salud, nutrición y bienestar.  Utilizando el dataset **Food-101**, que contiene 101 categorías de alimentos, se ha creado un clasificador binario. La clasificación se basa en una metadata predefinida que agrupa cada una de las 101 clases originales en "saludable" o "no saludable".
+[cite_start]Se aborda un caso de estudio real: la clasificación automática de alimentos, un problema relevante en aplicaciones de salud, nutrición y bienestar. [cite: 10] Utilizando el dataset **Food-101**, que contiene 101 categorías de alimentos, se ha creado un clasificador binario. La clasificación se basa en una metadata predefinida que agrupa cada una de las 101 clases originales en "saludable" o "no saludable".
 
--   [cite_start]**Fecha de Entrega:** 23 de Junio 2025 
--   [cite_start]**Duración:** 3 Semanas 
+-   [cite_start]**Fecha de Entrega:** 23 de Junio 2025 [cite: 5]
+-   [cite_start]**Duración:** 3 Semanas [cite: 7]
 
 ---
 
@@ -38,25 +40,27 @@
 El proyecto está organizado de la siguiente manera para garantizar la modularidad y reproducibilidad:
 
 ```
+
 /
-├── data/                   # Dataset procesado (saludable/no_saludable). No incluido en Git.
-├── food-101/               # Dataset raw descargado de Kaggle. No incluido en Git.
-├── foodnet-env/            # Entorno virtual de Python. No incluido en Git.
+├── data/                   \# Dataset procesado (saludable/no\_saludable). No incluido en Git.
+├── food-101/               \# Dataset raw descargado de Kaggle. No incluido en Git.
+├── foodnet-env/            \# Entorno virtual de Python. No incluido en Git.
 │
-[cite_start]├── app.py                  # Script de la interfaz gráfica con Streamlit. 
-├── augment_data.py         # Script para balancear el dataset con aumento de datos.
-├── clean_images.py         # Utilidad para eliminar imágenes corruptas.
-├── download_dataset.py     # Script para descargar el dataset desde Kaggle.
-[cite_start]├── evaluate.py             # Script para evaluar el modelo final con métricas. 
-[cite_start]├── foodnet_model.py        # Define la arquitectura de la CNN. 
-├── organize_dataset.py     # Organiza el dataset raw en clases binarias.
-├── train.py                # Script principal de entrenamiento del modelo.
+├── app.py                  \# Script de la interfaz gráfica con Streamlit. [cite: 13]
+├── augment\_data.py         \# Script para balancear el dataset con aumento de datos.
+├── clean\_images.py         \# Utilidad para eliminar imágenes corruptas.
+├── download\_dataset.py     \# Script para descargar el dataset desde Kaggle.
+├── evaluate.py             \# Script para evaluar el modelo final con métricas. [cite: 12]
+├── foodnet\_model.py        \# Define la arquitectura de la CNN.
+├── organize\_dataset.py     \# Organiza el dataset raw en clases binarias.
+├── train.py                \# Script principal de entrenamiento del modelo.
 │
-[cite_start]├── foodnet_model.h5        # Modelo entrenado y compilado. 
-├── requirements.txt        # Dependencias del proyecto.
-├── training_history.png    # Gráfico de la historia de entrenamiento.
-└── README.md               # Este informe técnico.
-```
+├── foodnet\_model.h5        \# Modelo entrenado y compilado. [cite: 15]
+├── requirements.txt        \# Dependencias del proyecto.
+├── training\_history.png    \# Gráfico de la historia de entrenamiento.
+└── README.md               \# Este informe técnico.
+
+````
 
 ---
 
@@ -65,10 +69,6 @@ El proyecto está organizado de la siguiente manera para garantizar la modularid
 Sigue estos pasos para replicar el entorno y ejecutar el proyecto.
 
 ### Prerrequisitos
-=======
-#### Curvas de Precisión y Pérdida
-![training_history](https://github.com/user-attachments/assets/9e5a1dc9-6c4a-4579-afe4-51f85c733e9b)
-*La imagen de los gráficos de `accuracy` y `loss` vs. épocas que se genera al final del entrenamiento. Esto mostrará cómo el modelo aprendió y si hubo sobreajuste.*
 
 -   Python 3.8 o superior
 -   Git
@@ -78,8 +78,8 @@ Sigue estos pasos para replicar el entorno y ejecutar el proyecto.
 
 1.  **Clonar el repositorio:**
     ```bash
-    git clone [URL-DE-TU-REPOSITORIO]
-    cd [NOMBRE-DEL-REPOSITORIO]
+    git clone [https://github.com/akhanER2000/FOOD-HEALTH-DETECTOR.git](https://github.com/akhanER2000/FOOD-HEALTH-DETECTOR.git)
+    cd FOOD-HEALTH-DETECTOR
     ```
 
 2.  **Configurar las credenciales de Kaggle:**
@@ -95,7 +95,6 @@ Sigue estos pasos para replicar el entorno y ejecutar el proyecto.
     source foodnet-env/bin/activate
     ```
 
-<<<<<<< HEAD
 4.  **Instalar las dependencias:**
     ```bash
     pip install -r requirements.txt
@@ -127,33 +126,33 @@ Sigue estos pasos para replicar el entorno y ejecutar el proyecto.
     ```bash
     streamlit run app.py
     ```
-    Se abrirá una pestaña en tu navegador para que puedas probar el modelo interactivamente. 
+    Se abrirá una pestaña en tu navegador para que puedas probar el modelo interactivamente.
 
 ---
 
 ## 4. Metodología Técnica
 
-### 4.1. Preprocesamiento de Datos 
+### 4.1. Preprocesamiento de Datos
 
-Un preprocesamiento riguroso fue clave para el éxito del modelo.
+[cite_start]Un preprocesamiento riguroso fue clave para el éxito del modelo. [cite: 12]
 
 -   **Organización del Dataset:** Se utilizó un diccionario para mapear las 101 clases del dataset Food-101 a dos categorías binarias: `saludable` (clase 0) y `no saludable` (clase 1).
 -   **Balanceo de Clases (Aumento Offline):** Se detectó un fuerte desbalance de clases. Para solucionarlo, se aplicó **aumento de datos** (rotación, zoom, desplazamiento, etc.) únicamente a las imágenes de la clase minoritaria (`saludable`). Las nuevas imágenes se guardaron en disco, equilibrando el número de muestras antes de iniciar el entrenamiento.
 -   **Limpieza de Datos:** Se inspeccionó el dataset en busca de imágenes corruptas o truncadas que pudieran causar errores durante el entrenamiento, eliminándolas con un script de limpieza.
 -   **Normalización:** Dentro del generador de datos de Keras, los valores de los píxeles de cada imagen (rango 0-255) se reescalaron al rango [0, 1] para facilitar la convergencia del modelo.
 
-### 4.2. Comparación de Técnicas 
+### 4.2. Comparación de Técnicas
 
-Se evaluaron dos arquitecturas principales para resolver el problema.
+[cite_start]Se evaluaron dos arquitecturas principales para resolver el problema. [cite: 10]
 
 | Técnica | Ventajas | Desventajas | Decisión Final |
 | :--- | :--- | :--- | :--- |
-| **CNN Personalizada (FoodNet)** | - Control total sobre la arquitectura y los parámetros. <br>- Modelo ligero y optimizado para la tarea binaria específica.<br>- Excelente para demostrar la comprensión de los bloques fundamentales de una CNN. | - Requiere más experimentación y ajuste manual.<br>- Puede tener un rendimiento inferior a modelos pre-entrenados si no se ajusta bien. | **Seleccionada.** Permitió construir una solución desde cero, cumpliendo con los objetivos de la actividad y demostrando el conocimiento en el diseño de arquitecturas. |
-| **Transfer Learning (MobileNetV2)** | - Aprovecha el conocimiento de un modelo entrenado en ImageNet (un dataset masivo). <br>- Requiere menos datos y tiempo de entrenamiento.<br>- Generalmente alcanza una precisión superior con menos esfuerzo. | - Menos control sobre las capas de extracción de características.<br>- El modelo resultante puede ser más grande y menos específico para la tarea. | **No seleccionada.** Aunque es una opción muy potente para producción, el objetivo era centrarse en el diseño de la arquitectura. |
+| **CNN Personalizada (FoodNet)** | - Control total sobre la arquitectura y los parámetros.<br>- Modelo ligero y optimizado para la tarea binaria específica.<br>- Excelente para demostrar la comprensión de los bloques fundamentales de una CNN. | - Requiere más experimentación y ajuste manual.<br>- Puede tener un rendimiento inferior a modelos pre-entrenados si no se ajusta bien. | **Seleccionada.** Permitió construir una solución desde cero, cumpliendo con los objetivos de la actividad y demostrando el conocimiento en el diseño de arquitecturas. |
+| **Transfer Learning (MobileNetV2)** | - Aprovecha el conocimiento de un modelo entrenado en ImageNet (un dataset masivo).<br>- Requiere menos datos y tiempo de entrenamiento.<br>- Generalmente alcanza una precisión superior con menos esfuerzo. | - Menos control sobre las capas de extracción de características.<br>- El modelo resultante puede ser más grande y menos específico para la tarea. | **No seleccionada.** Aunque es una opción muy potente para producción, el objetivo era centrarse en el diseño de la arquitectura. |
 
-### 4.3. Arquitectura del Modelo 
+### 4.3. Arquitectura del Modelo
 
-Se diseñó una Red Neuronal Convolucional (CNN) secuencial a la que llamamos **FoodNet**. Cada bloque está justificado para cumplir una función específica.
+Se diseñó una Red Neuronal Convolucional (CNN) secuencial a la que llamamos **FoodNet**. [cite_start]Cada bloque está justificado para cumplir una función específica. [cite: 11]
 
 -   **Diagrama de Arquitectura Textual:**
 
@@ -200,48 +199,44 @@ Se diseñó una Red Neuronal Convolucional (CNN) secuencial a la que llamamos **
 
 ---
 
-## 5. Evaluación y Resultados 
+## 5. Evaluación y Resultados
 
-El modelo fue entrenado utilizando `EarlyStopping` para detenerse en la mejor época y `ModelCheckpoint` para guardar los mejores pesos. Los resultados finales se obtuvieron evaluando el modelo guardado sobre el conjunto de validación.
+El modelo fue entrenado utilizando `EarlyStopping` para detenerse en la mejor época y `ModelCheckpoint` para guardar los mejores pesos. [cite_start]Los resultados finales se obtuvieron evaluando el modelo guardado sobre el conjunto de validación. [cite: 12]
 
 ### Reporte de Clasificación
 
-📊 Classification Report:
-
-              precision    recall  f1-score   support
-
-no_saludable       0.74      0.82      0.78     13800
-   saludable       0.64      0.53      0.58      8317
-
-    accuracy                           0.71     22117
-   macro avg       0.69      0.67      0.68     22117
-weighted avg       0.70      0.71      0.70     22117
+|               | precision | recall | f1-score | support |
+| :------------ | :-------: | :----: | :------: | :-----: |
+| **no_saludable** |   0.74    |  0.82  |   0.78   |  13800  |
+| **saludable** |   0.64    |  0.53  |   0.58   |  8317   |
+|               |           |        |          |         |
+| **accuracy** |           |        |   0.71   |  22117  |
+| **macro avg** |   0.69    |  0.67  |   0.68   |  22117  |
+| **weighted avg**|   0.70    |  0.71  |   0.70   |  22117  |
 
 ### Matriz de Confusión
 
-![Matriz de Confusión](matriz_de_confusion.png)
+![Matriz de Confusión](https://github.com/akhanER2000/FOOD-HEALTH-DETECTOR/assets/136009831/f05f8845-a9a7-4b77-a89e-31560e2553cd)
 
 ### Historial de Entrenamiento
 
 El siguiente gráfico muestra la evolución de la precisión y la pérdida durante el entrenamiento, demostrando que el modelo aprendió correctamente sin un sobreajuste significativo gracias al `EarlyStopping`.
 
-![Historial de Entrenamiento](training_history.png)
+![Historial de Entrenamiento](https://github.com/akhanER2000/FOOD-HEALTH-DETECTOR/assets/136009831/9e5a1dc9-6c4a-4579-afe4-51f85c733e9b)
 
 ---
 
-## 6. Interfaz Gráfica Interactiva 
+## 6. Interfaz Gráfica Interactiva
 
-Para facilitar la prueba y demostración del modelo, se desarrolló una aplicación web simple utilizando **Streamlit**. La aplicación permite al usuario subir una imagen de comida y recibir una clasificación en tiempo real.
+[cite_start]Para facilitar la prueba y demostración del modelo, se desarrolló una aplicación web simple utilizando **Streamlit**. [cite: 13] La aplicación permite al usuario subir una imagen de comida y recibir una clasificación en tiempo real.
 
-**[PEGA AQUÍ UNA CAPTURA DE PANTALLA DE TU APP STREAMLIT EN FUNCIONAMIENTO]**
-
-![Interfaz Gráfica](ruta/a/tu/captura_de_streamlit.png)
+![Interfaz Gráfica](https://github.com/akhanER2000/FOOD-HEALTH-DETECTOR/assets/136009831/0efb81b5-eb12-4217-a0ea-4523c94510b2)
 
 ---
 
-## 7. Reflexión Ética 
+## 7. Reflexión Ética
 
-El desarrollo de un sistema de clasificación de alimentos conlleva importantes consideraciones éticas:
+[cite_start]El desarrollo de un sistema de clasificación de alimentos conlleva importantes consideraciones éticas: [cite: 14]
 
 -   **Subjetividad de "Saludable":** El concepto de "saludable" no es universal. Depende de factores culturales, dietéticos (keto, veganismo, etc.) y necesidades médicas individuales. Nuestro modelo se basa en una clasificación predefinida que acarrea un sesgo inherente. Es crucial presentar la herramienta como una guía y no como una verdad absoluta.
 -   **Sesgo en el Dataset:** El dataset Food-101, aunque extenso, se centra principalmente en comida occidental y asiática. Esto significa que el modelo tendrá un rendimiento deficiente y podría dar clasificaciones erróneas para platos de otras culturas (latinoamericanas, africanas, etc.), perpetuando un sesgo cultural.
@@ -251,10 +246,6 @@ El desarrollo de un sistema de clasificación de alimentos conlleva importantes 
 
 ## 8. Autor
 
-**
-Akhan Lorenzo Andrés Espinoza Rojas
-Roberto López Lizana
-Mariano Mendez Fernandez**
-=======
------
-
+-   Akhan Lorenzo Andrés Espinoza Rojas
+-   Roberto López Lizana
+-   Mariano Mendez Fernandez
