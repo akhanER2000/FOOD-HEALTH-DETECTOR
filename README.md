@@ -62,7 +62,6 @@ El proyecto está organizado de la siguiente manera para garantizar la modularid
 
 ## 3. Instalación y Ejecución
 
-<<<<<<< HEAD
 Sigue estos pasos para replicar el entorno y ejecutar el proyecto.
 
 ### Prerrequisitos
@@ -70,7 +69,6 @@ Sigue estos pasos para replicar el entorno y ejecutar el proyecto.
 #### Curvas de Precisión y Pérdida
 ![training_history](https://github.com/user-attachments/assets/9e5a1dc9-6c4a-4579-afe4-51f85c733e9b)
 *La imagen de los gráficos de `accuracy` y `loss` vs. épocas que se genera al final del entrenamiento. Esto mostrará cómo el modelo aprendió y si hubo sobreajuste.*
->>>>>>> 649665930f17f7c21e9bd364423ee8f5bb5f8701
 
 -   Python 3.8 o superior
 -   Git
@@ -135,7 +133,7 @@ Sigue estos pasos para replicar el entorno y ejecutar el proyecto.
 
 ## 4. Metodología Técnica
 
-### 4.1. [cite_start]Preprocesamiento de Datos 
+### 4.1. Preprocesamiento de Datos 
 
 Un preprocesamiento riguroso fue clave para el éxito del modelo.
 
@@ -144,16 +142,16 @@ Un preprocesamiento riguroso fue clave para el éxito del modelo.
 -   **Limpieza de Datos:** Se inspeccionó el dataset en busca de imágenes corruptas o truncadas que pudieran causar errores durante el entrenamiento, eliminándolas con un script de limpieza.
 -   **Normalización:** Dentro del generador de datos de Keras, los valores de los píxeles de cada imagen (rango 0-255) se reescalaron al rango [0, 1] para facilitar la convergencia del modelo.
 
-### 4.2. [cite_start]Comparación de Técnicas 
+### 4.2. Comparación de Técnicas 
 
 Se evaluaron dos arquitecturas principales para resolver el problema.
 
 | Técnica | Ventajas | Desventajas | Decisión Final |
 | :--- | :--- | :--- | :--- |
-| **CNN Personalizada (FoodNet)** | - [cite_start]Control total sobre la arquitectura y los parámetros. <br>- Modelo ligero y optimizado para la tarea binaria específica.<br>- Excelente para demostrar la comprensión de los bloques fundamentales de una CNN. | - Requiere más experimentación y ajuste manual.<br>- Puede tener un rendimiento inferior a modelos pre-entrenados si no se ajusta bien. | **Seleccionada.** Permitió construir una solución desde cero, cumpliendo con los objetivos de la actividad y demostrando el conocimiento en el diseño de arquitecturas. |
-| **Transfer Learning (MobileNetV2)** | - [cite_start]Aprovecha el conocimiento de un modelo entrenado en ImageNet (un dataset masivo). <br>- Requiere menos datos y tiempo de entrenamiento.<br>- Generalmente alcanza una precisión superior con menos esfuerzo. | - Menos control sobre las capas de extracción de características.<br>- El modelo resultante puede ser más grande y menos específico para la tarea. | **No seleccionada.** Aunque es una opción muy potente para producción, el objetivo era centrarse en el diseño de la arquitectura. |
+| **CNN Personalizada (FoodNet)** | - Control total sobre la arquitectura y los parámetros. <br>- Modelo ligero y optimizado para la tarea binaria específica.<br>- Excelente para demostrar la comprensión de los bloques fundamentales de una CNN. | - Requiere más experimentación y ajuste manual.<br>- Puede tener un rendimiento inferior a modelos pre-entrenados si no se ajusta bien. | **Seleccionada.** Permitió construir una solución desde cero, cumpliendo con los objetivos de la actividad y demostrando el conocimiento en el diseño de arquitecturas. |
+| **Transfer Learning (MobileNetV2)** | - Aprovecha el conocimiento de un modelo entrenado en ImageNet (un dataset masivo). <br>- Requiere menos datos y tiempo de entrenamiento.<br>- Generalmente alcanza una precisión superior con menos esfuerzo. | - Menos control sobre las capas de extracción de características.<br>- El modelo resultante puede ser más grande y menos específico para la tarea. | **No seleccionada.** Aunque es una opción muy potente para producción, el objetivo era centrarse en el diseño de la arquitectura. |
 
-### 4.3. [cite_start]Arquitectura del Modelo 
+### 4.3. Arquitectura del Modelo 
 
 Se diseñó una Red Neuronal Convolucional (CNN) secuencial a la que llamamos **FoodNet**. Cada bloque está justificado para cumplir una función específica.
 
@@ -202,27 +200,26 @@ Se diseñó una Red Neuronal Convolucional (CNN) secuencial a la que llamamos **
 
 ---
 
-## [cite_start]5. Evaluación y Resultados 
+## 5. Evaluación y Resultados 
 
 El modelo fue entrenado utilizando `EarlyStopping` para detenerse en la mejor época y `ModelCheckpoint` para guardar los mejores pesos. Los resultados finales se obtuvieron evaluando el modelo guardado sobre el conjunto de validación.
 
 ### Reporte de Clasificación
 
-**[PEGA AQUÍ TU REPORTE DE CLASIFICACIÓN FINAL EN FORMATO MARKDOWN]**
-*Ejemplo:*
-|               | precision | recall | f1-score | support |
-| :------------ | :-------: | :----: | :------: | :-----: |
-| no_saludable  |   0.XX    |  0.XX  |   0.XX   |  XXXX   |
-| saludable     |   0.XX    |  0.XX  |   0.XX   |  XXXX   |
-| **accuracy** |           |        |   **0.XX** |  XXXX   |
-| **macro avg** |   0.XX    |  0.XX  |   0.XX   |  XXXX   |
-| **weighted avg**|   0.XX    |  0.XX  |   0.XX   |  XXXX   |
+📊 Classification Report:
+
+              precision    recall  f1-score   support
+
+no_saludable       0.74      0.82      0.78     13800
+   saludable       0.64      0.53      0.58      8317
+
+    accuracy                           0.71     22117
+   macro avg       0.69      0.67      0.68     22117
+weighted avg       0.70      0.71      0.70     22117
 
 ### Matriz de Confusión
 
-**[PEGA AQUÍ LA IMAGEN DE TU MATRIZ DE CONFUSIÓN (ej: `confusion_matrix.png`)]**
-
-![Matriz de Confusión](ruta/a/tu/matriz_de_confusion.png)
+![Matriz de Confusión](matriz_de_confusion.png)
 
 ### Historial de Entrenamiento
 
@@ -232,7 +229,7 @@ El siguiente gráfico muestra la evolución de la precisión y la pérdida duran
 
 ---
 
-## [cite_start]6. Interfaz Gráfica Interactiva 
+## 6. Interfaz Gráfica Interactiva 
 
 Para facilitar la prueba y demostración del modelo, se desarrolló una aplicación web simple utilizando **Streamlit**. La aplicación permite al usuario subir una imagen de comida y recibir una clasificación en tiempo real.
 
@@ -242,7 +239,7 @@ Para facilitar la prueba y demostración del modelo, se desarrolló una aplicaci
 
 ---
 
-## [cite_start]7. Reflexión Ética 
+## 7. Reflexión Ética 
 
 El desarrollo de un sistema de clasificación de alimentos conlleva importantes consideraciones éticas:
 
@@ -254,7 +251,10 @@ El desarrollo de un sistema de clasificación de alimentos conlleva importantes 
 
 ## 8. Autor
 
-**[Escribe aquí tu nombre y el de tu compañero]**
+**
+Akhan Lorenzo Andrés Espinoza Rojas
+Roberto López Lizana
+Mariano Mendez Fernandez**
 =======
 -----
->>>>>>> 649665930f17f7c21e9bd364423ee8f5bb5f8701
+
