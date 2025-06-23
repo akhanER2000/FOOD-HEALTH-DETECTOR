@@ -24,14 +24,14 @@
 
 ### Objetivo General
 
-[cite_start]El objetivo de este proyecto es desarrollar un sistema de visión artificial completo, desde la recolección y preprocesamiento de datos hasta la implementación y evaluación de un modelo de Deep Learning. [cite: 2] El sistema final es capaz de clasificar una imagen de un plato de comida en dos categorías: **saludable** y **no saludable**.
+El objetivo de este proyecto es desarrollar un sistema de visión artificial completo, desde la recolección y preprocesamiento de datos hasta la implementación y evaluación de un modelo de Deep Learning. [cite: 2] El sistema final es capaz de clasificar una imagen de un plato de comida en dos categorías: **saludable** y **no saludable**.
 
 ### Caso de Estudio
 
-[cite_start]Se aborda un caso de estudio real: la clasificación automática de alimentos, un problema relevante en aplicaciones de salud, nutrición y bienestar. [cite: 10] Utilizando el dataset **Food-101**, que contiene 101 categorías de alimentos, se ha creado un clasificador binario. La clasificación se basa en una metadata predefinida que agrupa cada una de las 101 clases originales en "saludable" o "no saludable".
+Se aborda un caso de estudio real: la clasificación automática de alimentos, un problema relevante en aplicaciones de salud, nutrición y bienestar. [cite: 10] Utilizando el dataset **Food-101**, que contiene 101 categorías de alimentos, se ha creado un clasificador binario. La clasificación se basa en una metadata predefinida que agrupa cada una de las 101 clases originales en "saludable" o "no saludable".
 
--   [cite_start]**Fecha de Entrega:** 23 de Junio 2025 [cite: 5]
--   [cite_start]**Duración:** 3 Semanas [cite: 7]
+- **Fecha de Entrega:** 23 de Junio 2025 [cite: 5]
+- **Duración:** 3 Semanas [cite: 7]
 
 ---
 
@@ -70,7 +70,7 @@ Sigue estos pasos para replicar el entorno y ejecutar el proyecto.
 
 ### Prerrequisitos
 
--   Python 3.8 o superior
+-   Python 3.8 hasta 3.11
 -   Git
 -   Credenciales de la API de Kaggle (archivo `kaggle.json`)
 
