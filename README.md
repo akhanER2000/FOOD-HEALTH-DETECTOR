@@ -24,14 +24,14 @@
 
 ### Objetivo General
 
-El objetivo de este proyecto es desarrollar un sistema de visión artificial completo, desde la recolección y preprocesamiento de datos hasta la implementación y evaluación de un modelo de Deep Learning. [cite: 2] El sistema final es capaz de clasificar una imagen de un plato de comida en dos categorías: **saludable** y **no saludable**.
+El objetivo de este proyecto es desarrollar un sistema de visión artificial completo, desde la recolección y preprocesamiento de datos hasta la implementación y evaluación de un modelo de Deep Learning.  El sistema final es capaz de clasificar una imagen de un plato de comida en dos categorías: **saludable** y **no saludable**.
 
 ### Caso de Estudio
 
-Se aborda un caso de estudio real: la clasificación automática de alimentos, un problema relevante en aplicaciones de salud, nutrición y bienestar. [cite: 10] Utilizando el dataset **Food-101**, que contiene 101 categorías de alimentos, se ha creado un clasificador binario. La clasificación se basa en una metadata predefinida que agrupa cada una de las 101 clases originales en "saludable" o "no saludable".
+Se aborda un caso de estudio real: la clasificación automática de alimentos, un problema relevante en aplicaciones de salud, nutrición y bienestar.  Utilizando el dataset **Food-101**, que contiene 101 categorías de alimentos, se ha creado un clasificador binario. La clasificación se basa en una metadata predefinida que agrupa cada una de las 101 clases originales en "saludable" o "no saludable".
 
-- **Fecha de Entrega:** 23 de Junio 2025 [cite: 5]
-- **Duración:** 3 Semanas [cite: 7]
+- **Fecha de Entrega:** 23 de Junio 2025 
+- **Duración:** 3 Semanas 
 
 ---
 
@@ -46,16 +46,16 @@ El proyecto está organizado de la siguiente manera para garantizar la modularid
 ├── food-101/               \# Dataset raw descargado de Kaggle. No incluido en Git.
 ├── foodnet-env/            \# Entorno virtual de Python. No incluido en Git.
 │
-├── app.py                  \# Script de la interfaz gráfica con Streamlit. [cite: 13]
+├── app.py                  \# Script de la interfaz gráfica con Streamlit. 
 ├── augment\_data.py         \# Script para balancear el dataset con aumento de datos.
 ├── clean\_images.py         \# Utilidad para eliminar imágenes corruptas.
 ├── download\_dataset.py     \# Script para descargar el dataset desde Kaggle.
-├── evaluate.py             \# Script para evaluar el modelo final con métricas. [cite: 12]
+├── evaluate.py             \# Script para evaluar el modelo final con métricas. 
 ├── foodnet\_model.py        \# Define la arquitectura de la CNN.
 ├── organize\_dataset.py     \# Organiza el dataset raw en clases binarias.
 ├── train.py                \# Script principal de entrenamiento del modelo.
 │
-├── foodnet\_model.h5        \# Modelo entrenado y compilado. [cite: 15]
+├── foodnet\_model.h5        \# Modelo entrenado y compilado. 
 ├── requirements.txt        \# Dependencias del proyecto.
 ├── training\_history.png    \# Gráfico de la historia de entrenamiento.
 └── README.md               \# Este informe técnico.
@@ -134,7 +134,7 @@ Sigue estos pasos para replicar el entorno y ejecutar el proyecto.
 
 ### 4.1. Preprocesamiento de Datos
 
-[cite_start]Un preprocesamiento riguroso fue clave para el éxito del modelo. [cite: 12]
+Un preprocesamiento riguroso fue clave para el éxito del modelo. 
 
 -   **Organización del Dataset:** Se utilizó un diccionario para mapear las 101 clases del dataset Food-101 a dos categorías binarias: `saludable` (clase 0) y `no saludable` (clase 1).
 -   **Balanceo de Clases (Aumento Offline):** Se detectó un fuerte desbalance de clases. Para solucionarlo, se aplicó **aumento de datos** (rotación, zoom, desplazamiento, etc.) únicamente a las imágenes de la clase minoritaria (`saludable`). Las nuevas imágenes se guardaron en disco, equilibrando el número de muestras antes de iniciar el entrenamiento.
@@ -143,7 +143,7 @@ Sigue estos pasos para replicar el entorno y ejecutar el proyecto.
 
 ### 4.2. Comparación de Técnicas
 
-[cite_start]Se evaluaron dos arquitecturas principales para resolver el problema. [cite: 10]
+Se evaluaron dos arquitecturas principales para resolver el problema. 
 
 | Técnica | Ventajas | Desventajas | Decisión Final |
 | :--- | :--- | :--- | :--- |
@@ -152,7 +152,7 @@ Sigue estos pasos para replicar el entorno y ejecutar el proyecto.
 
 ### 4.3. Arquitectura del Modelo
 
-Se diseñó una Red Neuronal Convolucional (CNN) secuencial a la que llamamos **FoodNet**. [cite_start]Cada bloque está justificado para cumplir una función específica. [cite: 11]
+Se diseñó una Red Neuronal Convolucional (CNN) secuencial a la que llamamos **FoodNet**. Cada bloque está justificado para cumplir una función específica. 
 
 -   **Diagrama de Arquitectura Textual:**
 
@@ -201,7 +201,7 @@ Se diseñó una Red Neuronal Convolucional (CNN) secuencial a la que llamamos **
 
 ## 5. Evaluación y Resultados
 
-El modelo fue entrenado utilizando `EarlyStopping` para detenerse en la mejor época y `ModelCheckpoint` para guardar los mejores pesos. [cite_start]Los resultados finales se obtuvieron evaluando el modelo guardado sobre el conjunto de validación. [cite: 12]
+El modelo fue entrenado utilizando `EarlyStopping` para detenerse en la mejor época y `ModelCheckpoint` para guardar los mejores pesos. Los resultados finales se obtuvieron evaluando el modelo guardado sobre el conjunto de validación. 
 
 ### Reporte de Clasificación
 
@@ -228,7 +228,7 @@ El siguiente gráfico muestra la evolución de la precisión y la pérdida duran
 
 ## 6. Interfaz Gráfica Interactiva
 
-[cite_start]Para facilitar la prueba y demostración del modelo, se desarrolló una aplicación web simple utilizando **Streamlit**. [cite: 13] La aplicación permite al usuario subir una imagen de comida y recibir una clasificación en tiempo real.
+Para facilitar la prueba y demostración del modelo, se desarrolló una aplicación web simple utilizando **Streamlit**.  La aplicación permite al usuario subir una imagen de comida y recibir una clasificación en tiempo real.
 
 ![Interfaz Gráfica](https://github.com/akhanER2000/FOOD-HEALTH-DETECTOR/assets/136009831/0efb81b5-eb12-4217-a0ea-4523c94510b2)
 
@@ -236,7 +236,7 @@ El siguiente gráfico muestra la evolución de la precisión y la pérdida duran
 
 ## 7. Reflexión Ética
 
-[cite_start]El desarrollo de un sistema de clasificación de alimentos conlleva importantes consideraciones éticas: [cite: 14]
+El desarrollo de un sistema de clasificación de alimentos conlleva importantes consideraciones éticas: 
 
 -   **Subjetividad de "Saludable":** El concepto de "saludable" no es universal. Depende de factores culturales, dietéticos (keto, veganismo, etc.) y necesidades médicas individuales. Nuestro modelo se basa en una clasificación predefinida que acarrea un sesgo inherente. Es crucial presentar la herramienta como una guía y no como una verdad absoluta.
 -   **Sesgo en el Dataset:** El dataset Food-101, aunque extenso, se centra principalmente en comida occidental y asiática. Esto significa que el modelo tendrá un rendimiento deficiente y podría dar clasificaciones erróneas para platos de otras culturas (latinoamericanas, africanas, etc.), perpetuando un sesgo cultural.
