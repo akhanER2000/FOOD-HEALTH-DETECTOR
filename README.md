@@ -243,8 +243,11 @@ El desarrollo de un sistema de clasificación de alimentos conlleva importantes 
 -   **Impacto Social y Legal:** Una herramienta de este tipo podría ser utilizada para promover hábitos saludables, pero también podría ser mal utilizada para fomentar conductas alimentarias restrictivas, avergonzar a personas por sus elecciones alimenticias o generar desórdenes. No existen implicaciones legales directas, pero el impacto social obliga a un diseño responsable.
 
 ---
-
-## 8. Autor
+## 8. Video Funcionamiento de interfaz
+title: Funcionamiento de interfaz
+product_video: '[https://www.youtube-nocookie.com/embed/URL](https://www.youtube.com/watch?v=7L1chgdvhEU)'
+---
+## 9. Autor
 
 -   Akhan Lorenzo Andrés Espinoza Rojas
 -   Roberto López Lizana
