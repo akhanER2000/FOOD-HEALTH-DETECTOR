@@ -244,8 +244,7 @@ El desarrollo de un sistema de clasificación de alimentos conlleva importantes 
 
 ---
 ## 8. Video Funcionamiento de interfaz
-title: Funcionamiento de interfaz
-product_video: '[https://www.youtube-nocookie.com/embed/URL](https://www.youtube.com/watch?v=7L1chgdvhEU)'
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/7L1chgdvhEU/0.jpg)](https://www.youtube.com/watch?v=7L1chgdvhEU)
 ---
 ## 9. Autor
 
